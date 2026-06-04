@@ -1,0 +1,3 @@
+- use sentence tranformers for embeddings (currenctly chromaDB does it)
+- chat memory
+- langchain
