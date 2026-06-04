@@ -173,12 +173,6 @@ Retrieval-Augmented Generation addresses these challenges by providing the model
 * PDFPlumber
 * Unstructured
 
-### Frontend
-
-* React.js
-* TypeScript
-* Tailwind CSS
-
 ### Deployment
 
 * Docker
@@ -203,20 +197,11 @@ rag-document-assistant/
 │   ├── rag_pipeline.py
 │   └── config.py
 │
-├── api/
-│   ├── routes.py
-│   └── main.py
-│
-├── frontend/
-│   ├── src/
-│   ├── components/
-│   └── pages/
+  └── main.py
 │
 ├── data/
 │
 ├── chroma_db/
-│
-├── tests/
 │
 ├── requirements.txt
 │
@@ -306,13 +291,6 @@ Employees are entitled to 20 paid leave days per year according to the uploaded 
 * Context compression
 * Long-context optimization
 
-### Enterprise Features
-
-* User authentication
-* Role-based access control
-* Document permissions
-* Audit logs
-
 ### Additional File Support
 
 * DOCX
@@ -328,13 +306,12 @@ Employees are entitled to 20 paid leave days per year according to the uploaded 
 * Retrieval metrics
 * Latency monitoring
 * Feedback collection
+  
+### Frontend 
+* Create a UI for the frontend
+* React.js or Next.js with tailwind css
 
-### Production Improvements
 
-* Redis caching
-* Background processing
-* Batch ingestion
-* Distributed deployment
 
 ---
 
