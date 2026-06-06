@@ -20,12 +20,14 @@ def create_collection():
 def store_chunks(
     collection,
     chunks,
-    filename
+    filename,
+    page_num
 ):
 
     metadatas = [
         {
             "source": filename,
+            "page_num": page_num,
             "chunk": i
         }
         for i in range(len(chunks))

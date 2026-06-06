@@ -15,5 +15,6 @@ def ingest_documents(
         store_chunks(
             collection,
             chunks,
-            doc["filename"]
+            doc["filename"],
+            doc["page_num"]
         )

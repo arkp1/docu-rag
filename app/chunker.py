@@ -1,13 +1,22 @@
 def create_chunks(
     text,
-    chunk_size=500
+    chunk_size=500,
+    chunk_overlap=100
 ):
 
-    return [
-        text[i:i+chunk_size]
-        for i in range(
-            0,
-            len(text),
-            chunk_size
-        )
-    ]
+    chunks = []
+
+    start = 0
+
+    while start < len(text):
+        
+        end = start + chunk_size
+
+        chunks.append(text[start:end])
+
+
+        start += chunk_size - chunk_overlap
+
+    return chunks
+
+    

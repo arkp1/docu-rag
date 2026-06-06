@@ -18,10 +18,16 @@ ingest_documents(
     documents
 )
 
+print("RAG document assistant v2" +
+      "\n--------------------------")
+
 while True:
     question = input(
-        "Ask your question: "
+        "\nAsk your question: \n"
     )
+
+    if question.lower() in ["exit", "quit"]:
+        break
 
     results = retrieve(
         collection,
@@ -41,7 +47,7 @@ while True:
         question
     )
 
-    print(answer)
+    print("\n" + answer)
 
     sources = {
         metadata["source"]
@@ -50,7 +56,14 @@ while True:
         ][0]
     }
 
-    print("\nSources:\n")
+    print("\nRetrieved Context:\n")
 
-    for source in sources:
-        print(source)
+    for i, (doc, metadata) in enumerate(
+        zip(
+            results["documents"][0],
+            results["metadatas"][0]
+        ),
+        start=1
+    ):
+        print(f"[{i}] Source: {metadata['source']} (Page: {metadata['page_num']})")
+        

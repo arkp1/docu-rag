@@ -1,5 +1,5 @@
 from pypdf import PdfReader
-import os
+import os   
 
 def load_pdfs(pdf_folder):
 
@@ -17,16 +17,23 @@ def load_pdfs(pdf_folder):
 
         reader = PdfReader(pdf_path)
 
-        text = ""
+        for page_num, page in enumerate(reader.pages):
 
-        for page in reader.pages:
-            text += page.extract_text() or ""
+            page_text = (
+                page.extract_text() or ""
+            )
 
-        documents.append(
-            {
-                "filename": filename,
-                "text": text
-            }
-        )
+            if not page_text.strip():
+                continue
+
+           
+
+            documents.append(
+                {
+                    "filename": filename,
+                    "page_num": page_num + 1,
+                    "text": page_text
+                }
+            )
 
     return documents
