@@ -8,6 +8,8 @@ The application ingests documents, processes and indexes their content using vec
 
 This project demonstrates the complete RAG pipeline used in modern AI-powered applications, including document processing, embedding generation, vector search, retrieval, and LLM orchestration.
 
+![](Untitled-2026-06-06-2308.png)
+
 ---
 
 ## Problem Statement
