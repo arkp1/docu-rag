@@ -1,4 +1,5 @@
 import chromadb
+from app.embedder import create_embeddings
 
 client = chromadb.PersistentClient(
     path="./chroma_db"
@@ -34,23 +35,28 @@ def store_chunks(
     ]
 
     ids = [
-        f"{filename}_id_{i}"
+        f"{filename}_page_{page_num}_id_{i}"
         for i in range(len(chunks))
     ]
 
+    embeddings = create_embeddings(chunks)
+
     collection.add(
-        documents=chunks,
+        documents=chunks, 
         ids=ids,
-        metadatas=metadatas
+        metadatas=metadatas,
+        embeddings=embeddings
     )
 
 def retrieve(
     collection,
     question,
-    n_results=6
+    n_results=10
 ):
+    
+    query_embedding = create_embeddings([question])
 
     return collection.query(
-        query_texts=[question],
+        query_embeddings=query_embedding,
         n_results=n_results
     )

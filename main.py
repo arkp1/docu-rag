@@ -66,4 +66,4 @@ while True:
         start=1
     ):
         print(f"[{i}] Source: {metadata['source']} (Page: {metadata['page_num']})")
-        
+
