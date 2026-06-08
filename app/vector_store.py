@@ -7,12 +7,12 @@ client = chromadb.PersistentClient(
 
 def create_collection():
 
-    try:
-        client.delete_collection(
-            "collection"
-        )
-    except:
-        pass
+    # try:
+    #     client.delete_collection(
+    #         "collection"
+    #     )
+    # except:
+    #     pass
 
     return client.get_or_create_collection(
         name="collection"

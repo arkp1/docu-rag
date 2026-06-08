@@ -1,3 +1,4 @@
-- use sentence tranformers for embeddings (currenctly chromaDB does it)
+- use sentence tranformers for embeddings (currenctly chromaDB does it) 
 - chat memory
 - langchain
+- different doc type support 

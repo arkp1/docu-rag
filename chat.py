@@ -1,22 +1,10 @@
-from app.pdf_loader import load_pdfs
 from app.vector_store import (
     create_collection,
     retrieve
 )
-from app.rag import ingest_documents
 from app.llm import generate_answer
 
-
 collection = create_collection()
-
-documents = load_pdfs(
-    "data/"
-)
-
-ingest_documents(
-    collection,
-    documents
-)
 
 print("RAG document assistant v2" +
       "\n--------------------------")
@@ -66,4 +54,6 @@ while True:
         start=1
     ):
         print(f"[{i}] Source: {metadata['source']} (Page: {metadata['page_num']})")
+    
+    print("collection count",collection.count())
 
