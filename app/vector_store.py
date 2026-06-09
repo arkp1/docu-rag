@@ -7,13 +7,6 @@ client = chromadb.PersistentClient(
 
 def create_collection():
 
-    # try:
-    #     client.delete_collection(
-    #         "collection"
-    #     )
-    # except:
-    #     pass
-
     return client.get_or_create_collection(
         name="collection"
     )
@@ -51,7 +44,7 @@ def store_chunks(
 def retrieve(
     collection,
     question,
-    n_results=10
+    n_results=20
 ):
     
     query_embedding = create_embeddings([question])
