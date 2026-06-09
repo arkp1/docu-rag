@@ -3,6 +3,8 @@ from app.vector_store import (
     retrieve
 )
 from app.llm import generate_answer
+from app.query_rewriter import rewrite_query
+from app.reranker import rerank
 
 collection = create_collection()
 
@@ -17,17 +19,32 @@ while True:
     if question.lower() in ["exit", "quit"]:
         break
 
+    retrieval_query = rewrite_query(question)
+    print("retrieval_query", retrieval_query)
+
     results = retrieve(
-        collection,
-        question
+        collection, 
+         retrieval_query
     )
 
     retrieved_docs = results[
         "documents"
     ][0]
 
+    print(
+    "\nBefore reranking:",
+    len(retrieved_docs)
+)
+
+    reranked_docs = rerank(question, retrieved_docs, top_k=5)
+
+    print(
+    "After reranking:",
+    len(reranked_docs)
+)
+
     context = "\n\n".join(
-        retrieved_docs
+        reranked_docs
     )
 
     answer = generate_answer(
